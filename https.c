@@ -641,6 +641,7 @@ static int https_connect(HTTP_INFO *hi, char *host, char *port)
 /*---------------------------------------------------------------------*/
 static int https_write(HTTP_INFO *hi, char *buffer, int len)
 {
+    printf("11111111https_write %s \n", buffer);
     int ret, slen = 0;
 
     while(1)
@@ -1065,7 +1066,7 @@ int http_write_header(HTTP_INFO *hi)
     /* Send HTTP request. */
     len = snprintf(request, 1024,
                    "%s %s HTTP/1.1\r\n"
-                   "User-Agent: Mozilla/4.0\r\n"
+                   "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/49.0.2623.108 Chrome/49.0.2623.108 Safari/537.36\r\n"
                    "Host: %s:%s\r\n"
                    "Content-Type: %s\r\n",
                    hi->request.method, hi->url.path,
@@ -1127,6 +1128,7 @@ int http_write_header(HTTP_INFO *hi)
 /*---------------------------------------------------------------------*/
 int http_write(HTTP_INFO *hi, char *data, int len)
 {
+printf("22222https_write %s \n", data);
     char        str[10];
     int         ret, l;
 
